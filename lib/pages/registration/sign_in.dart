@@ -10,167 +10,185 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignIn extends State<SignIn> {
+  bool passwordIsShown = false;
+
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+    final Size screenSize = MediaQuery.of(context).size;
+    final double screenWidth = screenSize.width;
+    final double screenHeight = screenSize.height;
+
+    // Define responsive padding and font sizes
+    final double horizontalPadding = screenWidth * 0.1;
+    final double verticalPadding = screenHeight * 0.05;
+    final double titleFontSize = screenWidth * 0.06;
+    final double subtitleFontSize = screenWidth * 0.04;
+    final double textFieldFontSize = screenWidth * 0.035;
+    final double logoSize = screenWidth * 0.2;
+
     return Scaffold(
       backgroundColor: ColorPallete.white,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.all(40),
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
           child: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 25,
-                ),
-                const Text(
-                  "Masuk",
-                  style: TextStyle(
-                    color: ColorPallete.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Inter',
-                  ),
-                ),
-                const Text(
-                  "Selamat Datang Kembali",
-                  style: TextStyle(
-                    color: ColorPallete.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: 'Inter',
-                  ),
-                ),
-                const SizedBox(
-                  height: 77,
-                ),
-                Image.asset(
-                  'assets/image/logo1.png',
-                  width: 90,
-                  height: 126.46,
-                ),
-                const SizedBox(
-                  height: 77,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Username",
-                      style: TextStyle(
-                        color: ColorPallete.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w100,
-                        fontFamily: 'Inter',
-                      ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.02),
+                  Text(
+                    "Masuk",
+                    style: TextStyle(
+                      color: ColorPallete.black,
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Inter',
                     ),
-                    const SizedBox(
-                      height: 12,
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
+                  Text(
+                    "Selamat Datang Kembali",
+                    style: TextStyle(
+                      color: ColorPallete.black,
+                      fontSize: subtitleFontSize,
+                      fontWeight: FontWeight.w100,
+                      fontFamily: 'Inter',
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Username",
-                        labelStyle: TextStyle(
-                          color: ColorPallete.primary[800],
-                          fontSize: 16,
+                  ),
+                  SizedBox(height: screenHeight * 0.11),
+                  Image.asset(
+                    'assets/image/logo1.png',
+                    width: logoSize,
+                    height: logoSize * 1.4,
+                  ),
+                  SizedBox(height: screenHeight * 0.05),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Username",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize,
                           fontWeight: FontWeight.w100,
                           fontFamily: 'Inter',
                         ),
-                        filled: true,
-                        fillColor: ColorPallete.primary[50],
-                        border: OutlineInputBorder(
+                      ),
+                      SizedBox(height: screenHeight * 0.01),
+                      TextField(
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          labelText: "Username",
+                          labelStyle: TextStyle(
+                            color: ColorPallete.primary[800],
+                            fontSize: textFieldFontSize,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Inter',
+                          ),
+                          filled: true,
+                          fillColor: ColorPallete.primary[50],
+                          border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide: BorderSide(
                               color: ColorPallete.primary[900]!,
                               width: 1,
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      "Kata Sandi",
-                      style: TextStyle(
-                        color: ColorPallete.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w100,
-                        fontFamily: 'Inter',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: TextStyle(
-                          color: ColorPallete.primary[800],
-                          fontSize: 16,
+                      SizedBox(height: screenHeight * 0.03),
+                      Text(
+                        "Kata Sandi",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize,
                           fontWeight: FontWeight.w100,
                           fontFamily: 'Inter',
                         ),
-                        filled: true,
-                        fillColor:
-                            ColorPallete.primary[50], // Light background color
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(
-                              color: ColorPallete.primary[900]!, width: 1),
-                        ),
-                        suffixIcon: Icon(Icons.visibility_off,
-                            color: ColorPallete.secondary[600]),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "Lupa password?",
+                      SizedBox(height: screenHeight * 0.01),
+                      TextField(
+                        obscureText: !passwordIsShown,
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          labelText: "Password",
+                          labelStyle: TextStyle(
+                            color: ColorPallete.primary[800],
+                            fontSize: textFieldFontSize,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Inter',
+                          ),
+                          filled: true,
+                          fillColor: ColorPallete.primary[50],
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              color: ColorPallete.primary[900]!,
+                              width: 1,
+                            ),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              passwordIsShown
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: ColorPallete.secondary[600],
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                passwordIsShown = !passwordIsShown;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.01),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Lupa password?",
+                          style: TextStyle(
+                            color: ColorPallete.primary[900],
+                            fontSize: textFieldFontSize * 0.8,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Inter',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.05),
+                  const RegistrationButton(buttonText: "Masuk"),
+                  SizedBox(height: screenHeight * 0.02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Belum punya akun? ",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize * 0.8,
+                          fontWeight: FontWeight.w100,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      Text(
+                        "Daftar",
                         style: TextStyle(
                           color: ColorPallete.primary[900],
-                          fontSize: 12,
+                          fontSize: textFieldFontSize * 0.8,
                           fontWeight: FontWeight.w100,
                           fontFamily: 'Inter',
                         ),
                       ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 77,
-                ),
-                const RegistrationButton(buttonText: "Masuk"),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Belum punya akun? ",
-                      style: TextStyle(
-                        color: ColorPallete.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w100,
-                        fontFamily: 'Inter',
-                      ),
-                    ),
-                    Text(
-                      "Daftar",
-                      style: TextStyle(
-                        color: ColorPallete.primary[900],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w100,
-                        fontFamily: 'Inter',
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

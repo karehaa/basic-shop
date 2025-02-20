@@ -133,13 +133,21 @@ class Onboarding2 extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Skip",
-                          style: TextStyle(
-                            color: ColorPallete.white,
-                            fontSize: buttonFontSize,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignIn(),
+                            ),
+                          ),
+                          child: Text(
+                            "Skip",
+                            style: TextStyle(
+                              color: ColorPallete.white,
+                              fontSize: buttonFontSize,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
                         SizedBox(

@@ -1,7 +1,7 @@
 import 'package:basic_shop1/pages/onboarding/onboarding2.dart';
+import 'package:basic_shop1/pages/registration/sign_in.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
 class Onboarding1 extends StatelessWidget {
   const Onboarding1({super.key});
@@ -134,13 +134,21 @@ class Onboarding1 extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Skip",
-                          style: TextStyle(
-                            color: ColorPallete.white,
-                            fontSize: buttonFontSize,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Inter',
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignIn(),
+                            ),
+                          ),
+                          child: Text(
+                            "Skip",
+                            style: TextStyle(
+                              color: ColorPallete.white,
+                              fontSize: buttonFontSize,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Inter',
+                            ),
                           ),
                         ),
                         SizedBox(

@@ -255,7 +255,7 @@ class _SignIn extends State<SignUp> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.05),
-                  const RegistrationButton(buttonText: "Masuk"),
+                  const RegistrationButton(buttonText: "Daftar"),
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

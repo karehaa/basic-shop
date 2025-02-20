@@ -1,4 +1,4 @@
-import 'package:basic_shop1/pages/onboarding/onboarding.dart';
+import 'package:basic_shop1/pages/registration/sign_in.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -149,7 +149,7 @@ class Onboarding2 extends StatelessWidget {
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Onboarding(),
+                              builder: (context) => const SignIn(),
                             ),
                           ),
                           child: Text(

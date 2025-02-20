@@ -10,19 +10,19 @@ class RegistrationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 332,
-      height: 43,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 12,
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: ColorPallete.primary[900]),
-      child: GestureDetector(
-        onTap: buttonFunction,
+    return GestureDetector(
+      onTap: buttonFunction,
+      child: Container(
+        alignment: Alignment.center,
+        width: 332,
+        height: 43,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 12,
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: ColorPallete.primary[900]),
         child: Text(
           buttonText,
           style: const TextStyle(

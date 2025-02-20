@@ -1,4 +1,5 @@
 import 'package:basic_shop1/pages/registration/sign_up.dart';
+import 'package:basic_shop1/pages/shop/shop_page.dart';
 import 'package:basic_shop1/pages/widgets/registration_button.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
@@ -163,7 +164,15 @@ class _SignIn extends State<SignIn> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.05),
-                  const RegistrationButton(buttonText: "Masuk"),
+                  RegistrationButton(
+                    buttonText: "Masuk",
+                    buttonFunction: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ShopPage(),
+                      ),
+                    ),
+                  ),
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

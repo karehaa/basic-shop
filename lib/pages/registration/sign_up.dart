@@ -1,17 +1,18 @@
-import 'package:basic_shop1/pages/registration/sign_up.dart';
+import 'package:basic_shop1/pages/registration/sign_in.dart';
 import 'package:basic_shop1/pages/widgets/registration_button.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignIn();
+  State<SignUp> createState() => _SignIn();
 }
 
-class _SignIn extends State<SignIn> {
+class _SignIn extends State<SignUp> {
   bool passwordIsShown = false;
+  bool confirmPasswordIsShown = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,6 @@ class _SignIn extends State<SignIn> {
     final double titleFontSize = screenWidth * 0.06;
     final double subtitleFontSize = screenWidth * 0.04;
     final double textFieldFontSize = screenWidth * 0.035;
-    final double logoSize = screenWidth * 0.2;
 
     return Scaffold(
       backgroundColor: ColorPallete.white,
@@ -42,7 +42,7 @@ class _SignIn extends State<SignIn> {
                 children: [
                   SizedBox(height: screenHeight * 0.02),
                   Text(
-                    "Masuk",
+                    "Daftar",
                     style: TextStyle(
                       color: ColorPallete.black,
                       fontSize: titleFontSize,
@@ -52,7 +52,7 @@ class _SignIn extends State<SignIn> {
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   Text(
-                    "Selamat Datang Kembali",
+                    "Buat akun baru kamu!",
                     style: TextStyle(
                       color: ColorPallete.black,
                       fontSize: subtitleFontSize,
@@ -60,16 +60,42 @@ class _SignIn extends State<SignIn> {
                       fontFamily: 'Inter',
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.11),
-                  Image.asset(
-                    'assets/image/logo1.png',
-                    width: logoSize,
-                    height: logoSize * 1.4,
-                  ),
                   SizedBox(height: screenHeight * 0.05),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        "Nama Lengkap",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize,
+                          fontWeight: FontWeight.w100,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.01),
+                      TextField(
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          labelText: "ex: Tristan Al Harrish Basori",
+                          labelStyle: TextStyle(
+                            color: ColorPallete.primary[800],
+                            fontSize: textFieldFontSize,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Inter',
+                          ),
+                          filled: true,
+                          fillColor: ColorPallete.primary[50],
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: ColorPallete.primary[900]!,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.03),
                       Text(
                         "Username",
                         style: TextStyle(
@@ -83,7 +109,39 @@ class _SignIn extends State<SignIn> {
                       TextField(
                         decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
-                          labelText: "Username",
+                          labelText: "ex: your.email@gmail.com",
+                          labelStyle: TextStyle(
+                            color: ColorPallete.primary[800],
+                            fontSize: textFieldFontSize,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: 'Inter',
+                          ),
+                          filled: true,
+                          fillColor: ColorPallete.primary[50],
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: ColorPallete.primary[900]!,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.03),
+                      Text(
+                        "No Handphone",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize,
+                          fontWeight: FontWeight.w100,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.01),
+                      TextField(
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          labelText: "ex: 0812345678",
                           labelStyle: TextStyle(
                             color: ColorPallete.primary[800],
                             fontSize: textFieldFontSize,
@@ -116,7 +174,7 @@ class _SignIn extends State<SignIn> {
                         obscureText: !passwordIsShown,
                         decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.never,
-                          labelText: "Password",
+                          labelText: "**********",
                           labelStyle: TextStyle(
                             color: ColorPallete.primary[800],
                             fontSize: textFieldFontSize,
@@ -147,16 +205,50 @@ class _SignIn extends State<SignIn> {
                           ),
                         ),
                       ),
+                      SizedBox(height: screenHeight * 0.03),
+                      Text(
+                        "Konfirmasi Kata Sandi",
+                        style: TextStyle(
+                          color: ColorPallete.black,
+                          fontSize: textFieldFontSize,
+                          fontWeight: FontWeight.w100,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
                       SizedBox(height: screenHeight * 0.01),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Lupa password?",
-                          style: TextStyle(
-                            color: ColorPallete.primary[900],
-                            fontSize: textFieldFontSize * 0.8,
+                      TextField(
+                        obscureText: !confirmPasswordIsShown,
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          labelText: "**********",
+                          labelStyle: TextStyle(
+                            color: ColorPallete.primary[800],
+                            fontSize: textFieldFontSize,
                             fontWeight: FontWeight.w100,
                             fontFamily: 'Inter',
+                          ),
+                          filled: true,
+                          fillColor: ColorPallete.primary[50],
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              color: ColorPallete.primary[900]!,
+                              width: 1,
+                            ),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              confirmPasswordIsShown
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: ColorPallete.secondary[600],
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                confirmPasswordIsShown =
+                                    !confirmPasswordIsShown;
+                              });
+                            },
                           ),
                         ),
                       ),
@@ -169,7 +261,7 @@ class _SignIn extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Belum punya akun? ",
+                        "Sudah punya punya akun? ",
                         style: TextStyle(
                           color: ColorPallete.black,
                           fontSize: textFieldFontSize * 0.8,
@@ -181,9 +273,9 @@ class _SignIn extends State<SignIn> {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignUp())),
+                                builder: (context) => const SignIn())),
                         child: Text(
-                          "Daftar",
+                          "Masuk",
                           style: TextStyle(
                             color: ColorPallete.primary[900],
                             fontSize: textFieldFontSize * 0.8,

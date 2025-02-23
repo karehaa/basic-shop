@@ -20,7 +20,7 @@ class _ShopPageState extends State<ShopPage> {
     final double screenHeight = screenSize.height;
 
     // Define responsive padding and font sizes
-    final double horizontalPadding = screenWidth * 0.068;
+    final double horizontalPadding = screenWidth * 0.05;
     final double verticalPadding = screenHeight * 0.03;
 
     // Responsive font sizes
@@ -47,6 +47,8 @@ class _ShopPageState extends State<ShopPage> {
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
                         height: screenHeight * 0.03,
@@ -124,6 +126,7 @@ class _ShopPageState extends State<ShopPage> {
                       Column(
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const ItemBox(
                                 itemImage: 'assets/image/jamur_enoki.jpg',
@@ -146,6 +149,7 @@ class _ShopPageState extends State<ShopPage> {
                             height: screenHeight * 0.02,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const ItemBox(
                                 itemImage: 'assets/image/kentang.jpg',
@@ -168,6 +172,7 @@ class _ShopPageState extends State<ShopPage> {
                             height: screenHeight * 0.02,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const ItemBox(
                                 itemImage: 'assets/image/bumbu_sayur_sop.jpg',

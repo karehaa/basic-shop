@@ -44,15 +44,15 @@ class ItemBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment:
-            CrossAxisAlignment.start, // Align children to the left
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            itemImage,
-            width: 132,
-            height: 142,
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              itemImage,
+              width: 148,
+              height: 158,
+            ),
           ),
           SizedBox(
             height: spacingSmall,
@@ -65,7 +65,6 @@ class ItemBox extends StatelessWidget {
               fontWeight: FontWeight.w700,
               fontFamily: 'Inter',
             ),
-            textAlign: TextAlign.left, // Align text to the left
           ),
           SizedBox(
             height: spacingMedium,
@@ -80,6 +79,7 @@ class ItemBox extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Inter',
                 ),
+                textAlign: TextAlign.left,
               ),
               SizedBox(
                 width: spacingMedium * 3.27, // Adjust spacing dynamically

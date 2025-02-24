@@ -8,102 +8,109 @@ class ItemBox extends StatelessWidget {
     required this.itemName,
     required this.itemPrice,
     required this.itemRating,
+    required this.itemRoute,
   });
 
   final String itemImage;
   final String itemName;
   final String itemPrice;
   final String itemRating;
+  final Widget itemRoute;
 
   @override
   Widget build(BuildContext context) {
-    // Get the screen size
     final Size screenSize = MediaQuery.of(context).size;
     final double screenWidth = screenSize.width;
 
-    // Define responsive dimensions
-    final double paddingHorizontal = screenWidth * 0.03; // 3% of screen width
-    final double paddingVertical = screenWidth * 0.04; // 2% of screen width
-    final double itemNameFontSize = screenWidth * 0.035; // 3.5% of screen width
-    final double itemPriceFontSize = screenWidth * 0.03; // 3% of screen width
-    final double itemRatingFontSize = screenWidth * 0.03; // 3% of screen width
-    final double starIconSize = screenWidth * 0.04; // 4% of screen width
-    final double spacingSmall = screenWidth * 0.02; // 2% of screen width
-    final double spacingMedium = screenWidth * 0.03; // 4% of screen width
+    final double paddingHorizontal = screenWidth * 0.03;
+    final double paddingVertical = screenWidth * 0.04;
+    final double itemNameFontSize = screenWidth * 0.035;
+    final double itemPriceFontSize = screenWidth * 0.03;
+    final double itemRatingFontSize = screenWidth * 0.03;
+    final double starIconSize = screenWidth * 0.04;
+    final double spacingSmall = screenWidth * 0.02;
+    final double spacingMedium = screenWidth * 0.03;
 
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: paddingHorizontal,
-        vertical: paddingVertical,
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 0.5,
-          color: ColorPallete.primary[800]!,
+    final double imageWidth = screenWidth * 0.35;
+    final double imageHeight = screenWidth * 0.40;
+
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => itemRoute)),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: paddingHorizontal,
+          vertical: paddingVertical,
         ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              itemImage,
-              width: 148,
-              height: 158,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 0.5,
+            color: ColorPallete.primary[800]!,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                itemImage,
+                width: imageWidth,
+                height: imageHeight,
+              ),
             ),
-          ),
-          SizedBox(
-            height: spacingSmall,
-          ),
-          Text(
-            itemName,
-            style: TextStyle(
-              color: ColorPallete.black,
-              fontSize: itemNameFontSize,
-              fontWeight: FontWeight.w700,
-              fontFamily: 'Inter',
+            SizedBox(
+              height: spacingSmall,
             ),
-          ),
-          SizedBox(
-            height: spacingMedium,
-          ),
-          Row(
-            children: [
-              Text(
-                itemPrice,
-                style: TextStyle(
-                  color: ColorPallete.secondary[700],
-                  fontSize: itemPriceFontSize,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'Inter',
+            Text(
+              itemName,
+              style: TextStyle(
+                color: ColorPallete.black,
+                fontSize: itemNameFontSize,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Inter',
+              ),
+            ),
+            SizedBox(
+              height: spacingMedium,
+            ),
+            Row(
+              children: [
+                Text(
+                  itemPrice,
+                  style: TextStyle(
+                    color: ColorPallete.secondary[700],
+                    fontSize: itemPriceFontSize,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Inter',
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(
-                width: spacingMedium * 3.27, // Adjust spacing dynamically
-              ),
-              Image.asset(
-                'assets/image/star.jpg',
-                width: starIconSize,
-                height: starIconSize,
-              ),
-              SizedBox(
-                width: spacingSmall,
-              ),
-              Text(
-                itemRating,
-                style: TextStyle(
-                  color: ColorPallete.grey,
-                  fontSize: itemRatingFontSize,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'Nunito',
+                SizedBox(
+                  width: spacingMedium * 3.27,
                 ),
-              )
-            ],
-          )
-        ],
+                Image.asset(
+                  'assets/image/star.jpg',
+                  width: starIconSize,
+                  height: starIconSize,
+                ),
+                SizedBox(
+                  width: spacingSmall,
+                ),
+                Text(
+                  itemRating,
+                  style: TextStyle(
+                    color: ColorPallete.grey,
+                    fontSize: itemRatingFontSize,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Nunito',
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

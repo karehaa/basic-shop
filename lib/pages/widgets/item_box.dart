@@ -1,3 +1,4 @@
+import 'package:basic_shop1/pages/shop/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 
@@ -8,14 +9,12 @@ class ItemBox extends StatelessWidget {
     required this.itemName,
     required this.itemPrice,
     required this.itemRating,
-    required this.itemRoute,
   });
 
   final String itemImage;
   final String itemName;
   final String itemPrice;
   final String itemRating;
-  final Widget itemRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,16 @@ class ItemBox extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => itemRoute)),
+        context,
+        MaterialPageRoute(
+          builder: (context) => ItemPage(
+            itemImage: itemImage,
+            itemName: itemName,
+            itemPrice: itemPrice,
+            itemRating: itemRating,
+          ),
+        ),
+      ),
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: paddingHorizontal,

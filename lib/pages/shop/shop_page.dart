@@ -1,4 +1,3 @@
-import 'package:basic_shop1/pages/shop/item_page.dart';
 import 'package:basic_shop1/pages/widgets/item_box.dart';
 import 'package:basic_shop1/themes/color_pallete.dart';
 import 'package:flutter/material.dart';
@@ -40,13 +39,15 @@ class _ShopPageState extends State<ShopPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding,
-                vertical: verticalPadding,
-              ),
-              child: Center(
-                child: SingleChildScrollView(
+            Center(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: horizontalPadding,
+                    right: horizontalPadding,
+                    top: verticalPadding - 20,
+                    bottom: verticalPadding + 70,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,7 +135,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Jamur Enoki",
                                 itemPrice: "Rp. 3.500",
                                 itemRating: "5.0",
-                                itemRoute: ItemPage(),
                               ),
                               SizedBox(
                                 width: itemSpacing,
@@ -144,7 +144,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Kol Segar 500gr",
                                 itemPrice: "Rp. 6.000",
                                 itemRating: "4.7",
-                                itemRoute: ItemPage(),
                               )
                             ],
                           ),
@@ -159,7 +158,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Kentang 500gr",
                                 itemPrice: "Rp. 8.000",
                                 itemRating: "4.8",
-                                itemRoute: ItemPage(),
                               ),
                               SizedBox(
                                 width: itemSpacing,
@@ -169,7 +167,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Wortel 500gr",
                                 itemPrice: "Rp. 10.000",
                                 itemRating: "4.6",
-                                itemRoute: ItemPage(),
                               )
                             ],
                           ),
@@ -184,7 +181,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Bumbu Sayur Sop",
                                 itemPrice: "Rp. 5.000",
                                 itemRating: "4.5",
-                                itemRoute: ItemPage(),
                               ),
                               SizedBox(
                                 width: itemSpacing,
@@ -194,7 +190,6 @@ class _ShopPageState extends State<ShopPage> {
                                 itemName: "Seledri 500gr",
                                 itemPrice: "Rp. 12.000",
                                 itemRating: "4.9",
-                                itemRoute: ItemPage(),
                               )
                             ],
                           )
